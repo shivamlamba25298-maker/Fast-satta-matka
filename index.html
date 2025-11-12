@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Results Panel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="ad">Trusted for 70+ Years</div>
+  </header>
+
+  <main class="container">
+    <div class="section-header">
+      <div class="live-tag">LIVE</div>
+      <div class="tabs">
+        <button class="tab active">11th</button>
+        <button class="tab">12th</button>
+      </div>
+    </div>
+
+    <ul id="results" class="results-list"></ul>
+  </main>
+
+  <script>
+    async function loadResults() {
+      try {
+        const res = await fetch('results.json', {cache: "no-store"});
+        const data = await res.json();
+        render(data);
+      } catch (e) {
+        console.error(e);
+        document.getElementById('results').innerHTML =
+          '<li class="error">Unable to load results</li>';
+      }
+    }
+
+    function render(list) {
+      const container = document.getElementById('results');
+      container.innerHTML = '';
+      list.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'row' + (item.highlight ? ' highlight' : '') + (item.gray ? ' gray' : '');
+        li.innerHTML = `
+          <div class="left">
+            <div class="title">${escapeHtml(item.name)}</div>
+            <div class="sub">at ${escapeHtml(item.time)} <a href="#" class="record">Record Chart</a></div>
+          </div>
+          <div class="right">
+            <div class="big">${escapeHtml(item.num1)}</div>
+            <div class="small">${escapeHtml(item.num2)}</div>
+          </div>
+        `;
+        container.appendChild(li);
+      });
+    }
+
+    // simple sanitizer
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+    loadResults();
+
+    // optional: auto-refresh every 30s
+    setInterval(loadResults, 30000);
+  </script>
+</body>
+</html>
