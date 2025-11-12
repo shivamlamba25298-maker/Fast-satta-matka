@@ -1,0 +1,12 @@
+[
+  {"name":"MAHARAJ","time":"05:15 PM","num1":"61","num2":"20","highlight":false},
+  {"name":"BADRINATH","time":"05:10 PM","num1":"98","num2":"89","highlight":true},
+  {"name":"HINDUSTAN","time":"05:00 PM","num1":"19","num2":"84","highlight":false},
+  {"name":"GHAZIABAD DIN","time":"04:35 PM","num1":"84","num2":"01","highlight":true},
+  {"name":"SHRI GANESH","time":"04:30 PM","num1":"79","num2":"70","highlight":true},
+  {"name":"DELHI ROSE","time":"04:10 PM","num1":"40","num2":"26","highlight":false},
+  {"name":"SHIV SHAKTI","time":"04:05 PM","num1":"90","num2":"74","highlight":false},
+  {"name":"CHAND TARA","time":"04:00 PM","num1":"05","num2":"36","highlight":false},
+  {"name":"NEW GANGA","time":"03:40 PM","num1":"00","num2":"27","gray":true},
+  {"name":"MAA BHAGWATI","time":"03:30 PM","num1":"73","num2":"24","highlight":false}
+]
